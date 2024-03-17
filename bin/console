@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler/setup'
+
+if File.exist?('.env.development')
+  require 'dotenv'
+  Dotenv.load('.env.development')
+end
+
+require 'ruby_critter'
+require 'pry-byebug'
+
+# So we can use FactoryBot and faker in the console.
+require 'factory_bot'
+require 'ffaker'
+FactoryBot.find_definitions
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use a different console, if you like.
+
+if RubyCritter.env.development?
+  puts "ATTENTION: ruby_critter home folder is: #{RubyCritter::OS::FileSystem.home_folder}!"
+end
+
+Pry.start

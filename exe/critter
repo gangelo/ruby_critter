@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require 'ruby_critter'
+
+options = { verbose: true, debug: true }
+# options = {}
+RubyCritter::Comms::Server.new(options: options).start.join
